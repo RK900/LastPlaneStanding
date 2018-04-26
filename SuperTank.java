@@ -1,0 +1,4 @@
+class SuperTank extends SmartTank
+{
+
+}

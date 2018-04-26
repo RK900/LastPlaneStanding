@@ -1,0 +1,4 @@
+class SmartTank extends Tank
+{
+
+}

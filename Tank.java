@@ -1,0 +1,4 @@
+class Tank extends Firer
+{
+
+}

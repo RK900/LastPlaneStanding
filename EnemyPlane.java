@@ -1,0 +1,4 @@
+class EnemyPlane extends Firer
+{
+
+}
