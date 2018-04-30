@@ -1,11 +1,15 @@
 package LastPlaneStanding;
 
-class Tank extends Firer
+class Tank extends Shooter
 {
 
-    public Tank() 
+    private int accuracy;
+    private int speed;
+
+    public Tank(int accuracy, int speed) 
     {
-        
+         this.accuracy = accuracy;
+         this.speed = speed;
     }
     
     public boolean fire()
