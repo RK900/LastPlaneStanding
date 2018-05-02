@@ -2,15 +2,12 @@ package LastPlaneStanding;
 
 public class Shooter
 {
-    public int health;
-    public Shooter( int x, int y )
+    public int health; // 0 to 10
+    public Shooter(int health)
     {
-        
+        this.health = health;
     }
-    public void move()
-    {
-        
-    }
+
     public void shoot( Projectile p )
     {
         
