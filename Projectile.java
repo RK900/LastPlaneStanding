@@ -16,9 +16,4 @@ public class Projectile
 
     }
 
-
-    public void collide()
-    {
-        
-    }
 }
