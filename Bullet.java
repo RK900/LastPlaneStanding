@@ -13,7 +13,7 @@ public class Bullet extends Projectile
 {
     public int damage;
 
-    public int x, y, cx, cy, width, height;
+    public int x, y, width, height;
 
     public boolean intact;
 
@@ -25,7 +25,7 @@ public class Bullet extends Projectile
         super( x, y );
         try
         {
-            img = ImageIO.read( new File( "plane.jpg" ) );
+            img = ImageIO.read( new File( "bullet.png" ) );
         }
         catch ( IOException e )
         {
@@ -43,6 +43,6 @@ public class Bullet extends Projectile
 
     public void move()
     {
-        
+        x -= 10;
     }
 }

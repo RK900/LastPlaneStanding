@@ -25,7 +25,7 @@ public class Plane extends Shooter
         cy = y;
         try
         {
-            img = ImageIO.read( new File( "plane.jpg" ) );
+            img = ImageIO.read( new File( "plane.png" ) );
         }
         catch ( IOException e )
         {
@@ -43,32 +43,32 @@ public class Plane extends Shooter
 
     public void moveUp()
     {
-        cy -= 10;
+        y -= 10;
     }
 
 
     public void moveDown()
     {
-        cy += 10;
+        y += 10;
     }
 
 
     public void moveLeft()
     {
-        cx -= 10;
+        x -= 10;
     }
 
 
     public void moveRight()
     {
-        cx += 10;
+        x += 10;
     }
 
 
     public void reset()
     {
-        cx = x;
-        cy = y;
+        x = cx;
+        y = cy;
         health = 10;
     }
 
