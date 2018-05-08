@@ -13,7 +13,7 @@ public class Bomb extends Projectile
 {
     public int damage;
 
-    public int x, y, cx, cy, width, height;
+    public int x, y, cy, width, height;
 
     public boolean intact;
 
@@ -25,7 +25,7 @@ public class Bomb extends Projectile
         super( x, y );
         try
         {
-            img = ImageIO.read( new File( "plane.jpg" ) );
+            img = ImageIO.read( new File( "bomb.jpg" ) );
         }
         catch ( IOException e )
         {
@@ -43,7 +43,6 @@ public class Bomb extends Projectile
 
     public void move()
     {
-        x += cx;
         y += cy;
         cy += 0.5f;
     }

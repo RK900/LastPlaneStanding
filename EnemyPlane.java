@@ -13,7 +13,7 @@ public class EnemyPlane extends Shooter
 {
     private int health;
 
-    public int x, y, cx, cy, width, height;
+    public int x, y, width, height;
 
     public Image img;
 
@@ -21,11 +21,9 @@ public class EnemyPlane extends Shooter
     public EnemyPlane( int health, int x, int y )
     {
         super( health, x, y );
-        cx = x;
-        cy = y;
         try
         {
-            img = ImageIO.read( new File( "plane.jpg" ) );
+            img = ImageIO.read( new File( "enemyplane.png" ) );
         }
         catch ( IOException e )
         {
@@ -43,15 +41,9 @@ public class EnemyPlane extends Shooter
 
     public void move()
     {
-        
+        x -= 10;
     }
 
-    public void reset()
-    {
-        cx = x;
-        cy = y;
-        health = 10;
-    }
     public boolean isAlive()
     {
         return health > 0;

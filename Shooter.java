@@ -19,11 +19,20 @@ public class Shooter
     }
 
 
-    public void collide( Projectile p )
+    public void collideProjectile( Projectile p )
     {
         if ( Math.abs( p.cx - cx ) < width / 2 && Math.abs( p.cy - cy ) < height / 2 )
         {
             health -= p.damage;
+        }
+    }
+    
+    public void collideShooter( Shooter s )
+    {
+        if ( Math.abs( s.cx - cx ) < width / 2 && Math.abs( s.cy - cy ) < height / 2 )
+        {
+            health = 0;
+            s.health = 0;
         }
     }
 }
