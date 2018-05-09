@@ -1,42 +1,59 @@
 package LastPlaneStanding;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 class Tank extends Shooter
 {
 
     private int accuracy;
     private int speed;
     private boolean markedDead, isDead, toBeRemoved;
-    private double width, height;
-    private double x, y, vx, vy = 0;
+    private int x, y, cx, cy = 0;
+    public Image img;
 
     public Tank( int health, int x, int y, int accuracy, int speed) 
     {
-         super(health);
+         super(health, x, y);
          this.accuracy = accuracy;
          this.speed = speed;
          this.x = x;
          this.y = y;
+         try
+         {
+             img = ImageIO.read( new File( "Tank.png" ) );
+         }
+         catch ( IOException e )
+         {
+             e.printStackTrace();
+         }
     }
     
-    public boolean fire()
-    {
         
-    }
-    
     public void move()
     {
         if(isDead || markedDead){
-            x -= Coordinator.SCREEN_SPEED;
-            if(x<-width) toBeRemoved = true;
+            x -= speed;
+            if(x > width) toBeRemoved = true;
         }
         else {
-            x += vx;
+            x += cx;
             if(x>=shooter.getX()) isDead = true;
         }
     }
     
-    public int getX(){
-        return x;
+    public int getX()
+    {
+        return cx;
+    }
+    
+    public int getY() 
+    {
+        return cy;
     }
         
     public boolean isHit(Bullet bullet)
