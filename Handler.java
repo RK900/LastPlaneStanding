@@ -15,7 +15,7 @@ public class Handler {
 
     public void render(Graphics g) {
         for (int i = 0; i < object.size(); i++) {
-            GameObject temp = this.object.get(i);
+            GameObject temp = object.get(i);
             temp.render(g);
         }
     }
