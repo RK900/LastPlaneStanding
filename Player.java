@@ -13,7 +13,7 @@ public class Player extends GameObject {
     }
 
     public void render(Graphics g) {
-        g.setColor(Color.black);
+        g.setColor(Color.white);
         g.fillRect(x, y, 32, 32);
     }
 }
