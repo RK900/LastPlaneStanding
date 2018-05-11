@@ -1,21 +1,33 @@
 package LastPlaneStanding;
 
-public class Projectile
+import java.awt.Graphics;
+
+public class Projectile extends GameObject
 {
-    public int damage;
-    public int x, y, cx, cy, width, height;
+    public int damage, width, height;
 
     public boolean intact;
 
 
-    public Projectile( int x, int y )
+    public Projectile( int x, int y, ID id )
     {
-        this.x = x;
-        this.y = y;
+        super( x , y, id);
         damage = 10;
-        width = 10;
-        height = 10;
         intact = true;
+    }
+
+
+    @Override
+    public void tick()
+    {
+        
+    }
+
+
+    @Override
+    public void render( Graphics g )
+    {
+        
     }
 
 }

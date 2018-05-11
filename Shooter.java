@@ -1,38 +1,38 @@
 package LastPlaneStanding;
 
-public class Shooter
+import java.awt.Graphics;
+import java.awt.Rectangle;
+
+public class Shooter extends GameObject
 {
-    public int health; // 0 to 10
+    public int health, width, height;
+    private Handler handler;
 
-    public int x, y, cx, cy, width, height;
 
-
-    public Shooter( int health, int x, int y )
+    public Shooter( int health, int x, int y, ID id, Handler handler )
     {
+        super(x, y, id);
         this.health = health;
-        this.x = x;
-        this.y = y;
-        cx = x;
-        cy = y;
-        width = 20;
-        height = 20;
+        this.handler = handler;
     }
 
 
-    public void collideProjectile( Projectile p )
+    public void tick()
     {
-        if ( Math.abs( p.cx - cx ) < width / 2 && Math.abs( p.cy - cy ) < height / 2 )
-        {
-            health -= p.damage;
-        }
     }
-    
-    public void collideShooter( Shooter s )
+
+
+    public void render( Graphics g )
     {
-        if ( Math.abs( s.cx - cx ) < width / 2 && Math.abs( s.cy - cy ) < height / 2 )
-        {
-            health = 0;
-            s.health = 0;
-        }
+        
     }
+
+
+    @Override
+    public Rectangle getBounds()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

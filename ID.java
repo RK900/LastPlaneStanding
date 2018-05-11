@@ -5,7 +5,9 @@ public enum ID {
     Enemy(),
     Tank(),
     Plane(),
+    Bomb(),
     EnemyPlane(),
     SmartTank(),
-    SuperTank();
+    SuperTank(), 
+    Bullet();
 }
