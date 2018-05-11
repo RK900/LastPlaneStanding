@@ -39,7 +39,7 @@ public class Plane extends Shooter
 
         x = Game.clamp( x, 0, Game.WIDTH - width );
         y = Game.clamp( y, 0, Game.HEIGHT - height * 2 );
-        handler.addObject( new Bomb( getX(), getY(), ID.Bomb) );
+        handler.addObject( new Bomb( getX(), getY(), ID.Bomb, 0.01f, handler) );
     }
     public void collideBullet()
     {
@@ -87,7 +87,8 @@ public class Plane extends Shooter
 
     public void render(Graphics g) {
         g.setColor(Color.white);
-        g.drawImage(img, x, y, width, height, null);
+        g.fillRect( x, y, width, height );
+        //g.drawImage(img, x, y, width, height, null);
     }
     public Rectangle getBounds()
     {

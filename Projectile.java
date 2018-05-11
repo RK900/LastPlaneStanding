@@ -1,6 +1,7 @@
 package LastPlaneStanding;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Projectile extends GameObject
 {
@@ -28,6 +29,14 @@ public class Projectile extends GameObject
     public void render( Graphics g )
     {
         
+    }
+
+
+    @Override
+    public Rectangle getBounds()
+    {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
