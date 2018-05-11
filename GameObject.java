@@ -7,6 +7,7 @@ public abstract class GameObject {
     protected int x, y;
     protected ID id;
     protected int velX, velY;
+    protected boolean shoot = false;
 
     public GameObject(int x, int y, ID id) {
         this.x = x;
@@ -16,6 +17,7 @@ public abstract class GameObject {
 
     public abstract void tick();
     public abstract void render(Graphics g);
+    public abstract Rectangle getBounds(); 
 
     public void setX(int x) {
         this.x = x;
@@ -55,5 +57,14 @@ public abstract class GameObject {
 
     public int getVelY() {
         return velY;
+    }
+
+    public void setShoot( boolean shoot )
+    {
+        shoot = true;
+    }
+    public boolean getShoot()
+    {
+        return shoot;
     }
 }

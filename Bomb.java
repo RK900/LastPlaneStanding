@@ -3,6 +3,7 @@ package LastPlaneStanding;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
 
@@ -11,21 +12,21 @@ import javax.imageio.ImageIO;
 
 public class Bomb extends Projectile
 {
-    public int damage;
-
-    public int x, y, cy, width, height;
-
-    public boolean intact;
 
     private Image img;
 
+    private int accY;
 
-    public Bomb( int x, int y )
+
+    public Bomb( int x, int y, ID id )
     {
-        super( x, y );
+        super( x, y, id );
+        width = 30;
+        height = 30;
+        accY = 1;
         try
         {
-            img = ImageIO.read( new File( "bomb.jpg" ) );
+            img = ImageIO.read( new File( "bomb.png" ) );
         }
         catch ( IOException e )
         {
@@ -34,16 +35,23 @@ public class Bomb extends Projectile
     }
 
 
-    public void update( Graphics g, Plane p )
+    public void tick()
     {
-        g.setColor( Color.BLACK );
-        g.drawImage( img, p.cx, p.cy, width, height, null );
+        y += velY;
+        velY += accY;
+        y = Game.clamp( y, 0, Game.HEIGHT - height * 2 );
     }
 
 
-    public void move()
+    public void render( Graphics g )
     {
-        y += cy;
-        cy += 0.5f;
+        g.setColor( Color.white );
+        g.drawImage( img, x, y, width, height, null );
+
+    }
+
+    public Rectangle getBounds()
+    {
+        return new Rectangle(x, y, width, height);
     }
 }
