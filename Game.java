@@ -24,10 +24,6 @@ public class Game extends Canvas implements Runnable
 
     private HUD hud;
 
-    private Plane plane;
-
-    private Bomb bomb;
-
 
     public Game()
     {
@@ -35,8 +31,7 @@ public class Game extends Canvas implements Runnable
         this.addKeyListener( new KeyInput( handler ) );
         new Window( WIDTH, HEIGHT, "Last Plane Standing", this );
         hud = new HUD();
-        plane = new Plane( 100, WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Plane, handler );
-        handler.addObject( plane );
+        handler.addObject( new Plane( 100, WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Plane, handler ) );
     }
 
 
