@@ -17,4 +17,11 @@ public class Player extends GameObject {
         g.setColor(Color.white);
         g.fillRect(x, y, 32, 32);
     }
+
+    @Override
+    public Rectangle getBounds()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

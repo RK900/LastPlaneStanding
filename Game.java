@@ -31,7 +31,8 @@ public class Game extends Canvas implements Runnable
         this.addKeyListener( new KeyInput( handler ) );
         new Window( WIDTH, HEIGHT, "Last Plane Standing", this );
         hud = new HUD();
-        handler.addObject( new Plane( 100, WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Plane, handler ) );
+        handler.addObject( new Player( WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player ) );
+        handler.addObject( new EnemyPlayer( WIDTH / 2 - 32, HEIGHT - 32, ID.EnemyPlayer, handler ) );
     }
 
 
