@@ -9,5 +9,7 @@ public enum ID {
     EnemyPlane(),
     SmartTank(),
     SuperTank(), 
-    Bullet();
+    Bullet(),
+    Trail(),
+    EnemyPlayer();
 }

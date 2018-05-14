@@ -21,7 +21,7 @@ public class KeyInput extends KeyAdapter
         for ( int i = 0; i < handler.object.size(); i++ )
         {
             GameObject temp = handler.object.get( i );
-            if ( temp.id == ID.Plane)
+            if ( temp.id == ID.Player)
             {
                 if ( key == KeyEvent.VK_W )
                 {
@@ -58,7 +58,7 @@ public class KeyInput extends KeyAdapter
         for ( int i = 0; i < handler.object.size(); i++ )
         {
             GameObject temp = handler.object.get( i );
-            if ( temp.id == ID.Plane )
+            if ( temp.id == ID.Player )
             {
                 if ( key == KeyEvent.VK_W )
                 {
