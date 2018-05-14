@@ -39,7 +39,7 @@ public class Plane extends Shooter
 
         x = Game.clamp( x, 0, Game.WIDTH - width );
         y = Game.clamp( y, 0, Game.HEIGHT - height * 2 );
-        handler.addObject( new Bomb( getX(), getY(), ID.Bomb, 0.01f, handler) );
+        //handler.addObject( new Bomb( getX(), getY(), ID.Bomb, 0.01f, handler) );
     }
     public void collideBullet()
     {

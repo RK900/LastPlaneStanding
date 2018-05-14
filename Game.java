@@ -95,7 +95,6 @@ public class Game extends Canvas implements Runnable
     private void tick()
     {
         handler.tick();
-        hud.tick();
     }
 
 
@@ -111,7 +110,6 @@ public class Game extends Canvas implements Runnable
         g.setColor( Color.gray );
         g.fillRect( 0, 0, WIDTH, HEIGHT );
         handler.render( g );
-        hud.render( g );
         g.dispose();
         bs.show();
     }
