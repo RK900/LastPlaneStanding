@@ -29,6 +29,7 @@ public class Bomb extends Projectile
         this.life = life;
         this.handler = handler;
         accY = 1;
+        velX = 5;
         try
         {
             img = ImageIO.read( new File( "bomb.png" ) );
@@ -46,10 +47,11 @@ public class Bomb extends Projectile
 //        {
 //            alpha -= (life - 0.001f);
 //        }else handler.removeObject( this );
-        //y += velY;
+        x += velX;
         //velY += accY;
-        //y = Game.clamp( y, 0, Game.HEIGHT - height * 2 );
-    }
+        if ( x <= 0 || x >= Game.WIDTH - 16) {
+          velX *= -1;
+      }    }
 
 
     public void render( Graphics g )
