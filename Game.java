@@ -32,7 +32,11 @@ public class Game extends Canvas implements Runnable
         new Window( WIDTH, HEIGHT, "Last Plane Standing", this );
         hud = new HUD();
         handler.addObject( new Player( WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player ) );
-        handler.addObject( new EnemyPlayer( WIDTH / 2 - 32, HEIGHT - 32, ID.EnemyPlayer, handler ) );
+        //handler.addObject( new EnemyPlayer( WIDTH / 2 - 32, HEIGHT - 32, ID.EnemyPlayer, handler ) );
+        Bomb b = new Bomb(WIDTH / 2 - 64, HEIGHT - 64, ID.Bomb, 12.5f, handler);
+        handler.addObject( b );
+        handler.addObject( new EnemyPlayer( b.getX(), b.getY(), ID.EnemyPlayer, handler ) );
+        
     }
 
 

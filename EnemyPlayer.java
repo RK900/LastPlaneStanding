@@ -18,12 +18,12 @@ public class EnemyPlayer extends GameObject {
     public void tick() {
         x += velX;
         y += velY;
-        if ( y <= 0 || y >= Game.HEIGHT - 12) {
-            velY *= -1;
-        }
-        if ( x <= 0 || x >= Game.WIDTH - 16) {
-            velX *= -1;
-        }
+//        if ( y <= 0 || y >= Game.HEIGHT - 12) {
+//            velY *= -1;
+//        }
+//        if ( x <= 0 || x >= Game.WIDTH - 16) {
+//            velX *= -1;
+//        }
 //        handler.addObject( new Trail(x, y, ID.Trail, Color.red, 16, 16, 0.1f, handler ) );
         handler.addObject( new Bullet(x, y, ID.Bullet, 0.1f, handler ) );
     }

@@ -42,10 +42,10 @@ public class Bomb extends Projectile
 
     public void tick()
     {
-        if( alpha > life)
-        {
-            alpha -= (life - 0.001f);
-        }else handler.removeObject( this );
+//        if( alpha > life)
+//        {
+//            alpha -= (life - 0.001f);
+//        }else handler.removeObject( this );
         //y += velY;
         //velY += accY;
         //y = Game.clamp( y, 0, Game.HEIGHT - height * 2 );
@@ -54,12 +54,12 @@ public class Bomb extends Projectile
 
     public void render( Graphics g )
     {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setComposite( makeTransparent( alpha  ) );
+//        Graphics2D g2d = (Graphics2D) g;
+//        g2d.setComposite( makeTransparent( alpha  ) );
         g.setColor( Color.white );
-//        g.fillRect( x, y, width, height );
-        g.drawImage( img, x, y, width, height, null );
-        g2d.setComposite( makeTransparent( 1 ));
+        g.fillRect( x, y, width, height );
+        //g.drawImage( img, x, y, width, height, null );
+//        g2d.setComposite( makeTransparent( 1 ));
     }
     private AlphaComposite makeTransparent( float alpha )
     {
