@@ -1,45 +1,58 @@
 package LastPlaneStanding;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
 public class SmartTank extends Tank
 {
-    private static final int ACCURACY = 5;
-    private static final int SPEED = 5;
-    private int x, y, cx, cy = 0;
-    public Image img;
     
-    public SmartTank(int health, int x, int y) 
-    {
-        super(8, x, y, ACCURACY, SPEED);
-        cx = x;
-        cy = y;
-        try
-        {
-            img = ImageIO.read( new File( "SmartTank.png" ) );
-        }
-        catch ( IOException e )
-        {
-            e.printStackTrace();
-        }
-    }
+    private int scoreKeep = new Random().nextInt(75);
+    private HUD hud;
+    private Handler handler;
     
-    public void move()
+    public SmartTank( int x, int y, ID id, float life, HUD hud, Handler handler )
     {
+        super(x, y, id, life, hud, handler);
+        this.hud = hud;
+        this.handler = handler;
         
     }
     
-    public int getX()
-    {
-        return cx;
+    public void tick() {
+        int r = new Random().nextInt( 1 );
+        if(r == 0)
+            x += velX;
+        else
+            x -= velX;
+        // velY += accY;
+        if ( x <= 0 || x >= Game.WIDTH - 16 )
+        {
+            velX *= -1;
+        }
+        scoreKeep++;
+        if ( scoreKeep >= 100 )
+        {
+            scoreKeep = 0;
+            hud.setLevel( hud.getLevel() + 1 );
+            handler.addObject( new SmartEnemyPlayer( x, y, ID.EnemyPlayer, handler ) );
+        }
     }
     
-    public int getY()
+    public void render( Graphics g )
     {
-        return cy;
+        // Graphics2D g2d = (Graphics2D) g;
+        // g2d.setComposite( makeTransparent( alpha ) );
+        g.setColor( Color.red );
+        g.fillRect( x, y, width, height );
+        // g.drawImage( img, x, y, width, height, null );
+        // g2d.setComposite( makeTransparent( 1 ));
     }
+    
+    
 }

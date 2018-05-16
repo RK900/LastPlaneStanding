@@ -12,7 +12,7 @@ public class EnemyPlayer extends GameObject
     private Random random;
 
 
-    public EnemyPlayer( int x, int y, ID id, Handler handler )
+    public EnemyPlayer(int x, int y, ID id, Handler handler)
     {
         super( x, y, id );
         this.handler = handler;
@@ -44,7 +44,7 @@ public class EnemyPlayer extends GameObject
 
     public void render( Graphics g )
     {
-        g.setColor( Color.red );
+        g.setColor( Color.gray );
         g.fillRect( x, y, 8, 8 );
     }
 

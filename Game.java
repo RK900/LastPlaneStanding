@@ -39,10 +39,14 @@ public class Game extends Canvas implements Runnable
         
         handler.addObject( new Player( WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler ) ); //Plane
 
-        handler.addObject( new EnemyPlayer( WIDTH / 2 - 32, HEIGHT - 32, ID.EnemyPlayer, handler ) ); //Bullet
-        handler.addObject(tank);
+        //handler.addObject( new EnemyPlayer( WIDTH / 2 - 32, HEIGHT - 32, ID.EnemyPlayer, handler ) ); //Bullet
+        //handler.addObject(tank);
         
-        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
+        //handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
+        handler.addObject(new SmartTank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
+//        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
+//        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
+//        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
 
 
 
@@ -99,7 +103,7 @@ public class Game extends Canvas implements Runnable
             if ( System.currentTimeMillis() - timer > 1000 )
             {
                 timer += 1000;
-                System.out.println("FPS: " + frames);
+                //System.out.println("FPS: " + frames);
                 frames = 0;
             }
         }

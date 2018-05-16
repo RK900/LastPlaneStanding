@@ -26,6 +26,9 @@ public class Player extends GameObject
         x = Game.clamp( x, 0, Game.WIDTH - width );
         y = Game.clamp( y, 0, Game.HEIGHT - height * 2 );
         collideTank();
+        if(HUD.HEALTH <= 0) {
+            handler.removeObject( this );
+        }
     }
 
 

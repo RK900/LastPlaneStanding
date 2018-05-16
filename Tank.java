@@ -82,7 +82,7 @@ public class Tank extends Projectile
     {
         // Graphics2D g2d = (Graphics2D) g;
         // g2d.setComposite( makeTransparent( alpha ) );
-        g.setColor( Color.white );
+        g.setColor( Color.gray );
         g.fillRect( x, y, width, height );
         // g.drawImage( img, x, y, width, height, null );
         // g2d.setComposite( makeTransparent( 1 ));
