@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -27,7 +28,7 @@ public class Tank extends Projectile
 
     private HUD hud;
 
-    private int scoreKeep = 0;
+    private int scoreKeep = new Random().nextInt(75);
 
 
     public Tank( int x, int y, ID id, float life, HUD hud, Handler handler )
@@ -57,7 +58,11 @@ public class Tank extends Projectile
         // {
         // alpha -= (life - 0.001f);
         // }else handler.removeObject( this );
-        x += velX;
+        int r = new Random().nextInt( 1 );
+        if(r == 0)
+            x += velX;
+        else
+            x -= velX;
         // velY += accY;
         if ( x <= 0 || x >= Game.WIDTH - 16 )
         {

@@ -2,6 +2,7 @@ package LastPlaneStanding;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 
 public class Game extends Canvas implements Runnable
@@ -34,12 +35,14 @@ public class Game extends Canvas implements Runnable
         this.addKeyListener( new KeyInput( handler ) );
         new Window( WIDTH, HEIGHT, "Last Plane Standing", this );
         hud = new HUD();
-        tank = new Tank(WIDTH / 2 - 64, HEIGHT - 64, ID.Tank, 12.5f, hud, handler);
+        tank = new Tank(WIDTH / 2 - 64, HEIGHT - 64, ID.Tank, 12.5f, hud, handler); //Tank
         
-        handler.addObject( new Player( WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler ) );
+        handler.addObject( new Player( WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler ) ); //Plane
 
-        handler.addObject( new EnemyPlayer( WIDTH / 2 - 32, HEIGHT - 32, ID.EnemyPlayer, handler ) );
+        handler.addObject( new EnemyPlayer( WIDTH / 2 - 32, HEIGHT - 32, ID.EnemyPlayer, handler ) ); //Bullet
         handler.addObject(tank);
+        
+        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
 
 
 

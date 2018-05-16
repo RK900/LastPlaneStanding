@@ -54,7 +54,10 @@ public class Bomb extends Projectile
         {
             handler.removeObject( this );
         }
-        }
+        
+        collide();
+        
+     }
 
 
     public void render( Graphics g )
@@ -66,6 +69,23 @@ public class Bomb extends Projectile
         //g.drawImage( img, x, y, width, height, null );
         g2d.setComposite( makeTransparent( 1 ));
     }
+    
+    
+    public void collide() {
+        for ( int i = 0; i < handler.object.size(); i++)
+        {
+            GameObject temp = handler.object.get( i );
+            if( temp.getID() == ID.Tank)
+            {
+                if ( getBounds().intersects( temp.getBounds() ))
+                {
+                    //HUD.HEALTH -= 10;
+                    handler.removeObject( temp );
+                }
+            }
+        }
+    }
+    
     private AlphaComposite makeTransparent( float alpha )
     {
         int type = AlphaComposite.SRC_OVER;
