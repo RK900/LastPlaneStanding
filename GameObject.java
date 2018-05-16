@@ -59,12 +59,4 @@ public abstract class GameObject {
         return velY;
     }
 
-    public void setShoot( boolean shoot )
-    {
-        shoot = true;
-    }
-    public boolean getShoot()
-    {
-        return shoot;
-    }
 }

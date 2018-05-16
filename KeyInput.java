@@ -41,7 +41,7 @@ public class KeyInput extends KeyAdapter
                 }
                 if ( key == KeyEvent.VK_SPACE)
                 {
-                    temp.setShoot(true);
+                    ( (Player)temp ).fire();
                 }
             }
         }
@@ -78,7 +78,7 @@ public class KeyInput extends KeyAdapter
                 }
                 if ( key == KeyEvent.VK_SPACE)
                 {
-                    temp.setShoot(false);
+                    ( (Player)temp ).fire();
                 }
             }
         }

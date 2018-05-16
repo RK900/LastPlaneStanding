@@ -19,14 +19,12 @@ public class Bomb extends Projectile
 
     private int accY;
     private float alpha = 1;
-    private float life;
     private Handler handler;
-    public Bomb( int x, int y, ID id, float life, Handler handler )
+    public Bomb( int x, int y, ID id, Handler handler )
     {
         super( x, y, id );
-        width = 30;
-        height = 30;
-        this.life = life;
+        width = 10;
+        height = 10;
         this.handler = handler;
         accY = 1;
         velX = 5;
@@ -43,25 +41,30 @@ public class Bomb extends Projectile
 
     public void tick()
     {
+        y += velY;
 //        if( alpha > life)
 //        {
 //            alpha -= (life - 0.001f);
 //        }else handler.removeObject( this );
-        x += velX;
-        //velY += accY;
-        if ( x <= 0 || x >= Game.WIDTH - 16) {
-          velX *= -1;
-      }    }
+        velY += accY;
+//        if ( x <= 0 || x >= Game.WIDTH - 16) {
+//          velX *= -1;
+//      }    
+        if (y >= Game.HEIGHT - 16)
+        {
+            handler.removeObject( this );
+        }
+        }
 
 
     public void render( Graphics g )
     {
-//        Graphics2D g2d = (Graphics2D) g;
-//        g2d.setComposite( makeTransparent( alpha  ) );
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setComposite( makeTransparent( alpha  ) );
         g.setColor( Color.white );
         g.fillRect( x, y, width, height );
         //g.drawImage( img, x, y, width, height, null );
-//        g2d.setComposite( makeTransparent( 1 ));
+        g2d.setComposite( makeTransparent( 1 ));
     }
     private AlphaComposite makeTransparent( float alpha )
     {

@@ -5,14 +5,13 @@ import java.awt.Rectangle;
 
 public class Shooter extends GameObject
 {
-    public int health, width, height;
+    public int width, height;
     private Handler handler;
 
 
-    public Shooter( int health, int x, int y, ID id, Handler handler )
+    public Shooter( int x, int y, ID id, Handler handler )
     {
         super(x, y, id);
-        this.health = health;
         this.handler = handler;
     }
 

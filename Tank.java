@@ -1,72 +1,75 @@
 package LastPlaneStanding;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-class Tank extends Shooter
+
+public class Tank extends Projectile
 {
 
-    private int accuracy;
-    private int speed;
-    private boolean markedDead, isDead, toBeRemoved;
-    private int x, y, cx, cy = 0;
-    public Image img;
+    private Image img;
 
-    public Tank( int health, int x, int y, int accuracy, int speed) 
+    private int accY;
+    private float alpha = 1;
+    private float life;
+    private Handler handler;
+    public Tank( int x, int y, ID id, float life, Handler handler )
     {
-         super(health, x, y);
-         this.accuracy = accuracy;
-         this.speed = speed;
-         this.x = x;
-         this.y = y;
-         try
-         {
-             img = ImageIO.read( new File( "Tank.png" ) );
-         }
-         catch ( IOException e )
-         {
-             e.printStackTrace();
-         }
-    }
-    
-        
-    public void move()
-    {
-        if(isDead || markedDead){
-            x -= speed;
-            if(x > width) toBeRemoved = true;
+        super( x, y, id );
+        width = 30;
+        height = 30;
+        this.life = life;
+        this.handler = handler;
+        accY = 1;
+        velX = 5;
+        try
+        {
+            img = ImageIO.read( new File( "bomb.png" ) );
         }
-        else {
-            x += cx;
-            if(x>=shooter.getX()) isDead = true;
+        catch ( IOException e )
+        {
+            e.printStackTrace();
         }
     }
-    
-    public int getX()
+
+
+    public void tick()
     {
-        return cx;
-    }
-    
-    public int getY() 
+//        if( alpha > life)
+//        {
+//            alpha -= (life - 0.001f);
+//        }else handler.removeObject( this );
+        x += velX;
+        //velY += accY;
+        if ( x <= 0 || x >= Game.WIDTH - 16) {
+          velX *= -1;
+      }    }
+
+
+    public void render( Graphics g )
     {
-        return cy;
+//        Graphics2D g2d = (Graphics2D) g;
+//        g2d.setComposite( makeTransparent( alpha  ) );
+        g.setColor( Color.white );
+        g.fillRect( x, y, width, height );
+        //g.drawImage( img, x, y, width, height, null );
+//        g2d.setComposite( makeTransparent( 1 ));
     }
-        
-    public boolean isHit(Bullet bullet)
+    private AlphaComposite makeTransparent( float alpha )
     {
-        int mx = bullet.getX();
-        int my = bullet.getY();
-        
-        if( (mx>=x-width/2 && mx<=x+width/2 && my>=y && my<=y+height) ||
-            (mx>=x-mx/2 && mx<=x+mx/2 && my>=y+height && my<=y+2*height) ||
-            (mx>=x-width/2 && mx<=x+width/2 && my>=y+2*height && my<=y+3*height) ) return true;
-        
-        return false;
+        int type = AlphaComposite.SRC_OVER;
+        return AlphaComposite.getInstance( type, alpha );
     }
-        
-    
+    public Rectangle getBounds()
+    {
+        return new Rectangle(x, y, width, height);
+    }
 }
