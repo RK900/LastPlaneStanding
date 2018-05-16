@@ -51,7 +51,7 @@ public class Plane extends Shooter
             {
                 if ( getBounds().intersects( temp.getBounds() ))
                 {
-                    HUD.HEALTH -= 2;
+                    HUD.HEALTH -= 10;
                 }
             }
         }

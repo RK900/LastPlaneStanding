@@ -18,16 +18,26 @@ public class Tank extends Projectile
     private Image img;
 
     private int accY;
+
     private float alpha = 1;
+
     private float life;
+
     private Handler handler;
-    public Tank( int x, int y, ID id, float life, Handler handler )
+
+    private HUD hud;
+
+    private int scoreKeep = 0;
+
+
+    public Tank( int x, int y, ID id, float life, HUD hud, Handler handler )
     {
         super( x, y, id );
         width = 30;
         height = 30;
         this.life = life;
         this.handler = handler;
+        this.hud = hud;
         accY = 1;
         velX = 5;
         try
@@ -43,33 +53,39 @@ public class Tank extends Projectile
 
     public void tick()
     {
-//        if( alpha > life)
-//        {
-//            alpha -= (life - 0.001f);
-//        }else handler.removeObject( this );
+        // if( alpha > life)
+        // {
+        // alpha -= (life - 0.001f);
+        // }else handler.removeObject( this );
         x += velX;
-        //velY += accY;
-        if ( x <= 0 || x >= Game.WIDTH - 16) {
-          velX *= -1;
-      }    }
+        // velY += accY;
+        if ( x <= 0 || x >= Game.WIDTH - 16 )
+        {
+            velX *= -1;
+        }
+        scoreKeep++;
+        if ( scoreKeep >= 100 )
+        {
+            scoreKeep = 0;
+            hud.setLevel( hud.getLevel() + 1 );
+            handler.addObject( new EnemyPlayer( x, y, ID.EnemyPlayer, handler ) );
+        }
+    }
 
 
     public void render( Graphics g )
     {
-//        Graphics2D g2d = (Graphics2D) g;
-//        g2d.setComposite( makeTransparent( alpha  ) );
+        // Graphics2D g2d = (Graphics2D) g;
+        // g2d.setComposite( makeTransparent( alpha ) );
         g.setColor( Color.white );
         g.fillRect( x, y, width, height );
-        //g.drawImage( img, x, y, width, height, null );
-//        g2d.setComposite( makeTransparent( 1 ));
+        // g.drawImage( img, x, y, width, height, null );
+        // g2d.setComposite( makeTransparent( 1 ));
     }
-    private AlphaComposite makeTransparent( float alpha )
-    {
-        int type = AlphaComposite.SRC_OVER;
-        return AlphaComposite.getInstance( type, alpha );
-    }
+
+
     public Rectangle getBounds()
     {
-        return new Rectangle(x, y, width, height);
+        return new Rectangle( x, y, width, height );
     }
 }

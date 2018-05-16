@@ -13,6 +13,7 @@ public class Shooter extends GameObject
     {
         super(x, y, id);
         this.handler = handler;
+
     }
 
 
