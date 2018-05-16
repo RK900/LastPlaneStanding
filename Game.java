@@ -25,6 +25,8 @@ public class Game extends Canvas implements Runnable
     private HUD hud;
 
     private Spawn spawn;
+    
+    private Tank tank;
 
     public Game()
     {
@@ -32,12 +34,15 @@ public class Game extends Canvas implements Runnable
         this.addKeyListener( new KeyInput( handler ) );
         new Window( WIDTH, HEIGHT, "Last Plane Standing", this );
         hud = new HUD();
-        spawn = new Spawn( handler, hud );
+        tank = new Tank(WIDTH / 2 - 64, HEIGHT - 64, ID.Tank, 12.5f, hud, handler);
+        
         handler.addObject( new Player( WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler ) );
-        //handler.addObject( new EnemyPlayer( WIDTH / 2 - 32, HEIGHT - 32, ID.EnemyPlayer, handler ) );
-        Tank b = new Tank(WIDTH / 2 - 64, HEIGHT - 64, ID.Bomb, 12.5f, handler);
-        handler.addObject( b );
-        handler.addObject( new EnemyPlayer( b.getX(), b.getY(), ID.EnemyPlayer, handler ) );
+
+        handler.addObject( new EnemyPlayer( WIDTH / 2 - 32, HEIGHT - 32, ID.EnemyPlayer, handler ) );
+        handler.addObject(tank);
+
+
+
         
     }
 
@@ -91,7 +96,7 @@ public class Game extends Canvas implements Runnable
             if ( System.currentTimeMillis() - timer > 1000 )
             {
                 timer += 1000;
-                // System.out.println("FPS: " + frames);
+                System.out.println("FPS: " + frames);
                 frames = 0;
             }
         }
