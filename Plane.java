@@ -17,19 +17,19 @@ public class Plane extends Shooter
     public Image img;
     private Handler handler;
 
-    public Plane( int health, int x, int y, ID id, Handler handler )
+    public Plane(  int x, int y, ID id, Handler handler )
     {
-        super( health, x, y, id, handler );
+        super(  x, y, id, handler );
         width = 32;
         height = 32;
-        try
-        {
-            img = ImageIO.read( new File( "plane.png" ) );
-        }
-        catch ( IOException e )
-        {
-            e.printStackTrace();
-        }
+//        try
+//        {
+//            img = ImageIO.read( new File( "plane.png" ) );
+//        }
+//        catch ( IOException e )
+//        {
+//            e.printStackTrace();
+//        }
     }
 
 
@@ -39,21 +39,7 @@ public class Plane extends Shooter
 
         x = Game.clamp( x, 0, Game.WIDTH - width );
         y = Game.clamp( y, 0, Game.HEIGHT - height * 2 );
-        //handler.addObject( new Bomb( getX(), getY(), ID.Bomb, 0.01f, handler) );
-    }
-    public void collideBullet()
-    {
-        for ( int i = 0; i < handler.object.size(); i++)
-        {
-            GameObject temp = handler.object.get( i );
-            if( temp.getID() == ID.Bullet)
-            {
-                if ( getBounds().intersects( temp.getBounds() ))
-                {
-                    health = 0;
-                }
-            }
-        }
+        collideTank();
     }
     
     public void collideTank()
@@ -61,25 +47,11 @@ public class Plane extends Shooter
         for ( int i = 0; i < handler.object.size(); i++)
         {
             GameObject temp = handler.object.get( i );
-            if( temp.getID() == ID.Tank)
+            if( temp.getID() == ID.EnemyPlayer)
             {
                 if ( getBounds().intersects( temp.getBounds() ))
                 {
-                    health = 0;
-                }
-            }
-        }
-    }
-    public void collideEnemyPlane()
-    {
-        for ( int i = 0; i < handler.object.size(); i++)
-        {
-            GameObject temp = handler.object.get( i );
-            if( temp.getID() == ID.EnemyPlane)
-            {
-                if ( getBounds().intersects( temp.getBounds() ))
-                {
-                    health = 0;
+                    HUD.HEALTH -= 2;
                 }
             }
         }
@@ -90,13 +62,13 @@ public class Plane extends Shooter
         g.fillRect( x, y, width, height );
         //g.drawImage(img, x, y, width, height, null);
     }
+    public void fire()
+    {
+        handler.addObject( new Bomb(x, y, ID.Bomb, handler ));
+    }
     public Rectangle getBounds()
     {
         return new Rectangle(x, y, width, height);
     }
 
-    public boolean isAlive()
-    {
-        return health > 0;
-    }
 }
