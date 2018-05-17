@@ -28,17 +28,17 @@ public class Handler {
         this.object.remove(object);
     }
     
-    public GameObject getObject(GameObject object) {
+    public GameObject getObject(ID object) {
         for(GameObject i : this.object) {
-            if(i.getID() == object.getID())
+            if(i.getID() == object)
                 return i;
         }
         return null;
     }
     
-    public boolean containsObject(GameObject object) {
+    public boolean containsObject(ID object) {
         for(GameObject i : this.object) {
-            if(i.getID() == object.getID())
+            if(i.getID() == object)
                 return true;
         }
         return false;

@@ -11,5 +11,6 @@ public enum ID {
     SuperTank(), 
     Bullet(),
     Trail(),
-    EnemyPlayer();
+    EnemyPlayer(),
+    YouWin();
 }

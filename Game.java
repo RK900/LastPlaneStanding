@@ -3,6 +3,9 @@ package LastPlaneStanding;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JTextField;
 
 
 public class Game extends Canvas implements Runnable
@@ -44,8 +47,8 @@ public class Game extends Canvas implements Runnable
         //handler.addObject( new EnemyPlayer( WIDTH / 2 - 32, HEIGHT - 32, ID.EnemyPlayer, handler ) ); //Bullet
         //handler.addObject(tank);
         
-        //handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
-        handler.addObject(new SmartTank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
+        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
+        //handler.addObject(new SmartTank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
 //        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
 //        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
 //        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
@@ -129,6 +132,23 @@ public class Game extends Canvas implements Runnable
     {
         handler.tick();
         hud.tick();
+        if(hud.HEALTH <= 0) {
+            
+            System.out.println( "Game Over" );
+            handler.removeObject( handler.getObject( ID.Player ) );
+            stop();
+        }
+        if(!handler.containsObject( ID.Tank ) && !handler.containsObject( ID.SmartTank )) {
+            System.out.println( "You win" );
+            handler.addObject(new YouWin(WIDTH/2, HEIGHT/2, ID.YouWin));
+            try {
+                TimeUnit.SECONDS.sleep( 1 );
+            }
+            catch(InterruptedException e) {
+                e.printStackTrace();
+            }
+            stop();
+        }
     }
 
 
