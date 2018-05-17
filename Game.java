@@ -8,9 +8,7 @@ import java.util.Random;
 public class Game extends Canvas implements Runnable
 {
 
-    /**
-     * 
-     */
+    
     private static final long serialVersionUID = -8843410072345543792L;
 
     public static final int WIDTH = 640;
@@ -29,6 +27,10 @@ public class Game extends Canvas implements Runnable
     
     private Tank tank;
 
+    
+    /**
+     * Game Constructor
+     */
     public Game()
     {
         handler = new Handler();
@@ -54,6 +56,9 @@ public class Game extends Canvas implements Runnable
     }
 
 
+    /**
+     * Starts game thread
+     */
     public synchronized void start()
     {
         thread = new Thread( this );
@@ -62,6 +67,9 @@ public class Game extends Canvas implements Runnable
     }
 
 
+    /**
+     * Stops game thread
+     */
     public synchronized void stop()
     {
         try
@@ -76,6 +84,9 @@ public class Game extends Canvas implements Runnable
     }
 
 
+    /** 
+     * Runs game
+     */
     public void run()
     {
         this.requestFocus();
@@ -111,6 +122,9 @@ public class Game extends Canvas implements Runnable
     }
 
 
+    /**
+     * Updates all objects in handler and HUD
+     */
     private void tick()
     {
         handler.tick();
@@ -118,6 +132,9 @@ public class Game extends Canvas implements Runnable
     }
 
 
+    /**
+     * Renders all objects
+     */
     private void render()
     {
         BufferStrategy bs = this.getBufferStrategy();
@@ -136,6 +153,13 @@ public class Game extends Canvas implements Runnable
     }
 
 
+    /**
+     * All objects bounce off edges
+     * @param var Location
+     * @param min Minimum location
+     * @param max Maximum location
+     * @return Location
+     */
     public static int clamp( int var, int min, int max )
     {
         if ( var >= max )
@@ -153,6 +177,10 @@ public class Game extends Canvas implements Runnable
     }
 
 
+    /**
+     * Main
+     * @param args not used
+     */
     public static void main( String[] args )
     {
         new Game();

@@ -4,6 +4,17 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
+/**
+ *  SmartEnemyPlayer
+ *  Smart Launcher for Bullet - Aims bullets at Player
+ *
+ *  @author  rohankoodli
+ *  @version May 16, 2018
+ *  @author  Period: 2
+ *  @author  Assignment: APCS2
+ *
+ *  @author  Sources: Rohan, Ravi, David
+ */
 public class SmartEnemyPlayer extends EnemyPlayer
 {
     private GameObject p;
@@ -12,6 +23,12 @@ public class SmartEnemyPlayer extends EnemyPlayer
     
     private int scoreKeep = new Random().nextInt(75);
     
+    /**
+     * @param x X location
+     * @param y Y location
+     * @param id ID
+     * @param handler Handler
+     */
     public SmartEnemyPlayer( int x, int y, ID id, Handler handler ) {
         super(x, y, id, handler);
         this.handler = handler;
@@ -22,6 +39,9 @@ public class SmartEnemyPlayer extends EnemyPlayer
         }
     }
     
+    /** 
+     * Updates SmartEnemyPlayer
+     */
     public void tick() {
         
         scoreKeep++;
@@ -60,6 +80,9 @@ public class SmartEnemyPlayer extends EnemyPlayer
         
     }
     
+    /** 
+     * Renders SmartEnemyPlayer
+     */
     public void render( Graphics g )
     {
         g.setColor( Color.red );

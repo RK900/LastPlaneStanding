@@ -12,7 +12,17 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-
+/**
+ *  Tank
+ *  Tank aims projectiles randomly
+ *
+ *  @author  rohankoodli
+ *  @version May 16, 2018
+ *  @author  Period: 2
+ *  @author  Assignment: APCS2
+ *
+ *  @author  Sources: Rohan, Ravi, David
+ */
 public class Tank extends Projectile
 {
 
@@ -31,6 +41,14 @@ public class Tank extends Projectile
     private int scoreKeep = new Random().nextInt(75);
 
 
+    /**
+     * @param x X location
+     * @param y Y location
+     * @param id ID
+     * @param life Health
+     * @param hud Heads Up Display
+     * @param handler Handler
+     */
     public Tank( int x, int y, ID id, float life, HUD hud, Handler handler )
     {
         super( x, y, id );
@@ -52,6 +70,9 @@ public class Tank extends Projectile
     }
 
 
+    /** 
+     * Updates Tank
+     */
     public void tick()
     {
         // if( alpha > life)
@@ -78,6 +99,9 @@ public class Tank extends Projectile
     }
 
 
+    /** 
+     * Renders Tank
+     */
     public void render( Graphics g )
     {
         // Graphics2D g2d = (Graphics2D) g;
@@ -89,6 +113,10 @@ public class Tank extends Projectile
     }
 
 
+    /**
+     * Get bounds of screen
+     * @return Rectangle with screen bounds
+     */
     public Rectangle getBounds()
     {
         return new Rectangle( x, y, width, height );

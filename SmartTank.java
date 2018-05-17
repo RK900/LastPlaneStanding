@@ -9,6 +9,17 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+/**
+ *  SmartTank
+ *  SmartTank aims projectiles at the Player instead of randomly
+ *
+ *  @author  rohankoodli
+ *  @version May 16, 2018
+ *  @author  Period: 2
+ *  @author  Assignment: APCS2
+ *
+ *  @author  Sources: Rohan, Ravi, David
+ */
 public class SmartTank extends Tank
 {
     
@@ -16,6 +27,12 @@ public class SmartTank extends Tank
     private HUD hud;
     private Handler handler;
     
+    /**
+     * @param x X location
+     * @param y Y location
+     * @param id ID
+     * @param handler Handler
+     */
     public SmartTank( int x, int y, ID id, float life, HUD hud, Handler handler )
     {
         super(x, y, id, life, hud, handler);
@@ -24,6 +41,9 @@ public class SmartTank extends Tank
         
     }
     
+    /** 
+     * Updates Tank
+     */
     public void tick() {
         int r = new Random().nextInt( 1 );
         if(r == 0)
@@ -44,6 +64,9 @@ public class SmartTank extends Tank
         }
     }
     
+    /** 
+     * Renders Tank
+     */
     public void render( Graphics g )
     {
         // Graphics2D g2d = (Graphics2D) g;
