@@ -27,4 +27,20 @@ public class Handler {
     public void removeObject(GameObject object) {
         this.object.remove(object);
     }
+    
+    public GameObject getObject(GameObject object) {
+        for(GameObject i : this.object) {
+            if(i.getID() == object.getID())
+                return i;
+        }
+        return null;
+    }
+    
+    public boolean containsObject(GameObject object) {
+        for(GameObject i : this.object) {
+            if(i.getID() == object.getID())
+                return true;
+        }
+        return false;
+    }
 }
