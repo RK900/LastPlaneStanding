@@ -48,7 +48,8 @@ public class Game extends Canvas implements Runnable
         //handler.addObject(tank);
         
         handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
-        //handler.addObject(new SmartTank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
+        handler.addObject(new SmartTank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
+        //handler.addObject(new EnemyPlane(WIDTH - 32, HEIGHT/2 - 32, ID.EnemyPlane, 12.5f, hud, handler));
 //        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
 //        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
 //        handler.addObject(new Tank((new Random().nextInt(WIDTH) + 400) / 2 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler));
