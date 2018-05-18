@@ -3,12 +3,31 @@ package LastPlaneStanding;
 import java.awt.*;
 
 
+/**
+ *  TODO Write a one-sentence summary of your class here.
+ *  TODO Follow it with additional details about its purpose, what abstraction
+ *  it represents, and how to use it.
+ *
+ *  @author  rohankoodli
+ *  @version May 18, 2018
+ *  @author  Period: TODO
+ *  @author  Assignment: APCS2
+ *
+ *  @author  Sources: TODO
+ */
 public class Player extends GameObject
 {
 
     private int width, height;
     private Handler handler;
+    public boolean tickUpdate = false;
 
+    /**
+     * @param x
+     * @param y
+     * @param id
+     * @param handler
+     */
     public Player( int x, int y, ID id, Handler handler )
     {
         super( x, y, id );
@@ -21,6 +40,7 @@ public class Player extends GameObject
 
     public void tick()
     {
+        tickUpdate = true;
         x += velX;
         y += velY;
         x = Game.clamp( x, 0, Game.WIDTH - width );
@@ -29,6 +49,7 @@ public class Player extends GameObject
         if(HUD.HEALTH <= 0) {
             handler.removeObject( this );
         }
+        
     }
 
 

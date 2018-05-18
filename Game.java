@@ -8,6 +8,17 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JTextField;
 
 
+/**
+ *  Game class
+ *  All the elements of the screen (GUI, actors) all live here
+ *
+ *  @author  rohankoodli
+ *  @version May 18, 2018
+ *  @author  Period: 2
+ *  @author  Assignment: APCS2
+ *
+ *  @author  Sources: Rohan, Ravi
+ */
 public class Game extends Canvas implements Runnable
 {
 
@@ -162,6 +173,12 @@ public class Game extends Canvas implements Runnable
             stop();
         }
     }
+    
+    
+    /**
+     * Waits 1 second
+     * @return true after 1 second
+     */
     public boolean waitOneSec()
     {
         try
