@@ -29,6 +29,8 @@ public class Game extends Canvas implements Runnable
     private Spawn spawn;
     
     private Tank tank;
+    
+    private int a = 500;
 
     
     /**
@@ -131,15 +133,24 @@ public class Game extends Canvas implements Runnable
      */
     private void tick()
     {
+        try
+        {
+            Thread.sleep( a );
+        }
+        catch ( InterruptedException e1 )
+        {
+            e1.printStackTrace();
+        }
+        a = 0;
         handler.tick();
         hud.tick();
-        if(hud.HEALTH <= 0) {
+        if(HUD.HEALTH <= 0) {
             
             System.out.println( "Game Over" );
             handler.removeObject( handler.getObject( ID.Player ) );
             stop();
         }
-        if(!handler.containsObject( ID.Tank ) && !handler.containsObject( ID.SmartTank )) {
+        else if(!handler.containsObject( ID.Tank ) && !handler.containsObject( ID.SmartTank ) && handler.containsObject( ID.Player ) && HUD.HEALTH > 0) {
             System.out.println( "You win" );
             handler.addObject(new YouWin(WIDTH/2, HEIGHT/2, ID.YouWin));
             try {
@@ -150,6 +161,19 @@ public class Game extends Canvas implements Runnable
             }
             stop();
         }
+    }
+    public boolean waitOneSec()
+    {
+        try
+        {
+            Thread.sleep( 1000 );
+            
+        }
+        catch(InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+        return true;
     }
 
 
