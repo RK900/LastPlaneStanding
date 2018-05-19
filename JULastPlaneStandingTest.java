@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+
+import javax.swing.KeyStroke;
 
 import org.junit.Test;
 
@@ -24,13 +27,16 @@ public class JULastPlaneStandingTest
     int x = 5;
     int y = 10;
     Graphics g;
-    private HUD hud;
+    private HUD hud = new HUD();
     
     Player p = new Player(x, y, ID.Player, handler);
     Tank t = new Tank(x, y, ID.Tank, 10f, hud, handler);
     SmartTank st = new SmartTank(x, y, ID.Tank, 10f, hud, handler);
     EnemyPlayer ep = new EnemyPlayer(x, y, ID.EnemyPlayer, handler);
     SmartEnemyPlayer sep = new SmartEnemyPlayer(x, y, ID.EnemyPlayer, handler);
+    Trail tr = new Trail(x, y, ID.Trail, Color.RED, 16, 16, 0f, handler);
+    Bomb b = new Bomb(x, y, ID.Bomb, handler);
+    Bullet bt = new Bullet(x, y, ID.Bullet, 0f, handler);
     
     
 
@@ -40,6 +46,9 @@ public class JULastPlaneStandingTest
         handler.addObject( st );
         handler.addObject( ep );
         handler.addObject( sep );
+        handler.addObject( tr );
+        handler.addObject( b );
+        handler.addObject( bt );
         
     }
     
@@ -182,6 +191,76 @@ public class JULastPlaneStandingTest
         assertNotNull(sep.getBounds());
     }
     
+    @Test
+    public void hudTick() {
+        assertNotNull(hud.HEALTH);
+    }
 
+    @Test
+    public void hudLevel() {
+        hud.setLevel( 10 );
+        assertEquals(hud.getLevel(),10);
+    }
+    
+    public void hudScore() {
+        hud.setScore( 10 );
+        assertEquals(hud.getScore(),10);
+    }
+    
+    @Test
+    public void trailConstructor() {
+        assertEquals(tr.getID(), ID.Trail);
+    }
+    
+    @Test
+    public void trailTick() {
+        init();
+        tr.tick();
+        assertTrue(handler.containsObject( ID.Trail ));
+        //assertEquals(sep.getX(), 10);
+    }
+    
+    @Test
+    public void trailGetBounds() {
+        assertNotNull(tr.getBounds());
+    }
+    
+    @Test
+    public void bombConstructor() {
+        assertEquals(b.getID(), ID.Bomb);
+    }
+    
+    @Test
+    public void bombTick() {
+        init();
+        b.tick();
+        assertTrue(handler.containsObject( ID.Bomb ));
+        assertEquals(b.getX(), x);
+    }
+    
+    @Test
+    public void bombGetBounds() {
+        assertNotNull(b.getBounds());
+    }
+    
+    @Test
+    public void bulletConstructor() {
+        assertEquals(bt.getID(), ID.Bullet);
+    }
+    
+    @Test
+    public void bulletTick() {
+        init();
+        bt.tick();
+        assertTrue(handler.containsObject( ID.Bullet ));
+        assertEquals(bt.getX(), x);
+    }
+    
+    @Test
+    public void bulletGetBounds() {
+        assertNotNull(bt.getBounds());
+    }
+    
+    
 
 }
