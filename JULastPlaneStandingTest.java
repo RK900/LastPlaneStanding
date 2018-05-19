@@ -37,6 +37,8 @@ public class JULastPlaneStandingTest
     Trail tr = new Trail(x, y, ID.Trail, Color.RED, 16, 16, 0f, handler);
     Bomb b = new Bomb(x, y, ID.Bomb, handler);
     Bullet bt = new Bullet(x, y, ID.Bullet, 0f, handler);
+    Projectile pr = new Projectile(x, y, ID.Projectile);
+    Shooter s = new Shooter(x, y, ID.Shooter, handler);
     
     
 
@@ -49,6 +51,8 @@ public class JULastPlaneStandingTest
         handler.addObject( tr );
         handler.addObject( b );
         handler.addObject( bt );
+        handler.addObject( pr );
+        handler.addObject( s );
         
     }
     
@@ -259,6 +263,16 @@ public class JULastPlaneStandingTest
     @Test
     public void bulletGetBounds() {
         assertNotNull(bt.getBounds());
+    }
+    
+    @Test
+    public void projectileConstructor() {
+        assertEquals(pr.getID(), ID.Projectile);
+    }
+    
+    @Test
+    public void shooterConstructor() {
+        assertEquals(s.getID(), ID.Shooter);
     }
     
     

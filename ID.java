@@ -12,5 +12,7 @@ public enum ID {
     Bullet(),
     Trail(),
     EnemyPlayer(),
+    Projectile(),
+    Shooter(),
     YouWin();
 }
