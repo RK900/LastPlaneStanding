@@ -32,6 +32,7 @@ public class JULastPlaneStandingTest
     Player p = new Player(x, y, ID.Player, handler);
     Tank t = new Tank(x, y, ID.Tank, 10f, hud, handler);
     SmartTank st = new SmartTank(x, y, ID.Tank, 10f, hud, handler);
+    SuperTank su = new SuperTank(x, y, ID.Tank, 10f, hud, handler);
     EnemyPlayer ep = new EnemyPlayer(x, y, ID.EnemyPlayer, handler);
     SmartEnemyPlayer sep = new SmartEnemyPlayer(x, y, ID.EnemyPlayer, handler);
     Trail tr = new Trail(x, y, ID.Trail, Color.RED, 16, 16, 0f, handler);
@@ -39,6 +40,7 @@ public class JULastPlaneStandingTest
     Bullet bt = new Bullet(x, y, ID.Bullet, 0f, handler);
     Projectile pr = new Projectile(x, y, ID.Projectile);
     Shooter s = new Shooter(x, y, ID.Shooter, handler);
+    YouWin yw = new YouWin(x, y, ID.YouWin, "Win");
     
     
 
@@ -109,21 +111,41 @@ public class JULastPlaneStandingTest
     }
     
     @Test
-    public void superTankConstructor() {
+    public void smartTankConstructor() {
         assertEquals(st.getID(), ID.Tank);
     }
     
     @Test
-    public void superTankTick() {
-        init();
+    public void smartTankTick() {
+        //init();
+        handler.addObject( st );
         st.tick();
         assertTrue(handler.containsObject( ID.Tank ));
         assertEquals(st.getX(), 10);
     }
     
     @Test
-    public void superTankGetBounds() {
+    public void smartTankGetBounds() {
         assertNotNull(st.getBounds());
+    }
+    
+    @Test
+    public void superTankConstructor() {
+        assertEquals(su.getID(), ID.Tank);
+    }
+    
+    @Test
+    public void superTankTick() {
+        //init();
+        handler.addObject( su );
+        su.tick();
+        assertTrue(handler.containsObject( ID.Tank ));
+        assertEquals(su.getX(), 10);
+    }
+    
+    @Test
+    public void superTankGetBounds() {
+        assertNotNull(su.getBounds());
     }
     
     
@@ -237,6 +259,7 @@ public class JULastPlaneStandingTest
     @Test
     public void bombTick() {
         init();
+        b.setVelY( -20 );
         b.tick();
         assertTrue(handler.containsObject( ID.Bomb ));
         assertEquals(b.getX(), x);
@@ -246,7 +269,7 @@ public class JULastPlaneStandingTest
     public void bombGetBounds() {
         assertNotNull(b.getBounds());
     }
-    
+
     @Test
     public void bulletConstructor() {
         assertEquals(bt.getID(), ID.Bullet);
@@ -273,6 +296,63 @@ public class JULastPlaneStandingTest
     @Test
     public void shooterConstructor() {
         assertEquals(s.getID(), ID.Shooter);
+    }
+    
+    @Test
+    public void spawnConstructor() {
+        assertNotNull(new Spawn(this.handler, this.hud, t));
+    }
+    
+    @Test
+    public void handlerTick() {
+        //init();
+        handler.addObject( bt );
+        handler.tick();
+        assertTrue(handler.containsObject( ID.Bullet ));
+    }
+    
+    @Test
+    public void handlerAddObject() {
+        //init();
+        handler.addObject( bt );
+        assertTrue(handler.containsObject( ID.Bullet ));
+    }
+    
+    @Test
+    public void handlerRemoveObject() {
+        //init();
+        handler.addObject( bt );
+        handler.removeObject( bt );
+        assertTrue(!handler.containsObject( ID.Bullet ));
+    }
+    
+    @Test
+    public void handlerGetObject() {
+        //init();
+        handler.addObject( bt );
+        GameObject x = handler.getObject( ID.Bullet );
+        assertEquals(x.getID(), ID.Bullet);
+    }
+    
+    @Test
+    public void handlerContainsObject() {
+        //init();
+        handler.addObject( bt );
+        assertTrue(handler.containsObject( ID.Bullet ));
+    }
+    
+    @Test
+    public void youWinConstructor() {
+        //init();
+        handler.addObject( yw );
+        assertTrue(handler.containsObject( ID.YouWin ));
+    }
+    
+    @Test
+    public void youWinGetBounds() {
+        //init();
+        handler.addObject( yw );
+        assertNull(yw.getBounds());
     }
     
     
