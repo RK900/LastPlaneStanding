@@ -1,6 +1,0 @@
-package LastPlaneStanding;
-
-class Frame
-{
-
-}
