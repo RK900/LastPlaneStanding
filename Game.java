@@ -8,6 +8,16 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JTextField;
 
 
+/**
+ *  Runs the entire game
+ *
+ *  @author  rohankoodli
+ *  @version May 21, 2018
+ *  @author  Period: 2
+ *  @author  Assignment: APCS2
+ *
+ *  @author  Sources: Rohan Ravi David
+ */
 public class Game extends Canvas implements Runnable
 {
 
