@@ -4,6 +4,18 @@ import java.awt.*;
 import java.util.Random;
 
 
+/**
+*
+*  Controls the tanks and enemy plane
+*
+*  @author  Ravi
+*  @version May 20, 2018
+*  @author  Period: 2
+*  @author  Assignment: APCSFinal
+*
+*  @author  Sources: Rohan, Ravi, David
+*/
+
 public class EnemyPlayer extends GameObject
 {
 
@@ -12,6 +24,13 @@ public class EnemyPlayer extends GameObject
     private Random random;
 
 
+    /**
+     * EnemyPlayer constructor initializing variables
+     * @param x
+     * @param y
+     * @param id
+     * @param handler
+     */
     public EnemyPlayer(int x, int y, ID id, Handler handler)
     {
         super( x, y, id );
@@ -22,6 +41,9 @@ public class EnemyPlayer extends GameObject
     }
 
 
+    /**
+     * Updates enemyPlayer
+     */
     public void tick()
     {
         x += velX;
@@ -43,6 +65,9 @@ public class EnemyPlayer extends GameObject
     }
 
 
+    /**
+     * Renders enemyPlayer
+     */
     public void render( Graphics g )
     {
         g.setColor( Color.gray );
@@ -50,6 +75,11 @@ public class EnemyPlayer extends GameObject
     }
 
 
+    /**
+     * gets bounds of screen
+     *
+     * @return Rectangle with screen bounds
+     */
     @Override
     public Rectangle getBounds()
     {

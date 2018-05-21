@@ -44,6 +44,9 @@ public class JULastPlaneStandingTest
     
     
 
+    /**
+     * Initializes handler
+     */
     public void init() {
         handler.addObject( p );
         handler.addObject( t );
@@ -58,6 +61,10 @@ public class JULastPlaneStandingTest
         
     }
     
+    
+    /**
+     * Tests player constructor
+     */
     @Test
     public void playerConstructor()
     {
@@ -65,6 +72,9 @@ public class JULastPlaneStandingTest
         assertEquals(p.getID(), ID.Player);
     }
     
+    /**
+     * Tests player tick/update method
+     */
     @Test
     public void playerTick() {
         init();
@@ -75,6 +85,9 @@ public class JULastPlaneStandingTest
         assertEquals(p.getX(), x);
     }
     
+    /**
+     * Tests player fire
+     */
     @Test
     public void playerFire() {
         init();
@@ -82,12 +95,18 @@ public class JULastPlaneStandingTest
         assertTrue(handler.containsObject( ID.Bomb ));
     }
     
+    /**
+     * Tests player get bounds
+     */
     @Test
     public void playerGetBounds() {
         assertNotNull(p.getBounds());
     }
     
-    
+  
+    /**
+     * Tests tank constructor
+     */
     @Test
     public void tankConstructor()
     {
@@ -95,6 +114,9 @@ public class JULastPlaneStandingTest
         assertEquals(t.getID(), ID.Tank);
     }
     
+    /**
+     * Tests tank tick/update method
+     */
     @Test
     public void tankTick() {
         init();
@@ -105,16 +127,25 @@ public class JULastPlaneStandingTest
         assertEquals(p.getX(), x);
     }
     
+    /**
+     * Tests tank get bounds
+     */
     @Test
     public void tankGetBounds() {
         assertNotNull(t.getBounds());
     }
     
+    /**
+     * Tests smarttank constructor
+     */
     @Test
     public void smartTankConstructor() {
         assertEquals(st.getID(), ID.Tank);
     }
     
+    /**
+     * Tests smarttank tick/update method
+     */
     @Test
     public void smartTankTick() {
         //init();
@@ -124,16 +155,25 @@ public class JULastPlaneStandingTest
         assertEquals(st.getX(), 10);
     }
     
+    /**
+     * Tests smarttank get bounds
+     */
     @Test
     public void smartTankGetBounds() {
         assertNotNull(st.getBounds());
     }
     
+    /**
+     * Tests supertank constructor
+     */
     @Test
     public void superTankConstructor() {
         assertEquals(su.getID(), ID.Tank);
     }
     
+    /**
+     * Tests Supertank tick/update method
+     */
     @Test
     public void superTankTick() {
         //init();
@@ -143,12 +183,18 @@ public class JULastPlaneStandingTest
         assertEquals(su.getX(), 10);
     }
     
+    /**
+     * Tests supertank get bounds
+     */
     @Test
     public void superTankGetBounds() {
         assertNotNull(su.getBounds());
     }
     
     
+    /**
+     * Tests GameObject set
+     */
     @Test
     public void gameObjectSet() {
         p.setX( 10 );
@@ -170,6 +216,9 @@ public class JULastPlaneStandingTest
         assertEquals(t.getVelY(), 40);
     }
     
+    /**
+     * Tests GameObject get
+     */
     @Test
     public void gameObjectGet() {
         init();
@@ -181,11 +230,17 @@ public class JULastPlaneStandingTest
         assertEquals(p.getVelY(), 20);
     }
     
+    /**
+     * Tests EnemyPlayer constructor
+     */
     @Test
     public void enemyPlayerConstructor() {
         assertEquals(ep.getID(), ID.EnemyPlayer);
     }
     
+    /**
+     * Tests EnemyPlayer tick/update method
+     */
     @Test
     public void enemyPlayerTick() {
         init();
@@ -194,16 +249,25 @@ public class JULastPlaneStandingTest
         // can't do getX() b/c velX & velY are random ints
     }
     
+    /**
+     * Tests enemyplayer get bounds
+     */
     @Test
     public void enemyPlayerGetBounds() {
         assertNotNull(ep.getBounds());
     }
     
+    /**
+     * Tests SmartEnemyPlayer constructor
+     */
     @Test
     public void smartEnemyPlayerConstructor() {
         assertEquals(sep.getID(), ID.EnemyPlayer);
     }
     
+    /**
+     * Tests SmartEnemyPlayer tick/update method
+     */
     @Test
     public void smartEnemyPlayerTick() {
         init();
@@ -212,32 +276,51 @@ public class JULastPlaneStandingTest
         //assertEquals(sep.getX(), 10);
     }
     
+    /**
+     * Tests smartenemyplayer get bounds
+     */
     @Test
     public void smartEnemyPlayerGetBounds() {
         assertNotNull(sep.getBounds());
     }
     
+    /**
+     * Tests hud tick/update method
+     */
     @Test
     public void hudTick() {
         assertNotNull(hud.HEALTH);
     }
 
+    /**
+     * Tests HUD update level
+     */
     @Test
     public void hudLevel() {
         hud.setLevel( 10 );
         assertEquals(hud.getLevel(),10);
     }
     
+    /**
+     * Tests HUD update score
+     */
+    @Test
     public void hudScore() {
         hud.setScore( 10 );
         assertEquals(hud.getScore(),10);
     }
     
+    /**
+     * Tests trail constructor
+     */
     @Test
     public void trailConstructor() {
         assertEquals(tr.getID(), ID.Trail);
     }
     
+    /**
+     * Tests trail tick/update method
+     */
     @Test
     public void trailTick() {
         init();
@@ -246,16 +329,25 @@ public class JULastPlaneStandingTest
         //assertEquals(sep.getX(), 10);
     }
     
+    /**
+     * Tests trail get bounds
+     */
     @Test
     public void trailGetBounds() {
         assertNotNull(tr.getBounds());
     }
     
+    /**
+     * Tests bomb constructor
+     */
     @Test
     public void bombConstructor() {
         assertEquals(b.getID(), ID.Bomb);
     }
     
+    /**
+     * Tests bomb tick/update method
+     */
     @Test
     public void bombTick() {
         init();
@@ -265,16 +357,25 @@ public class JULastPlaneStandingTest
         assertEquals(b.getX(), x);
     }
     
+    /**
+     * Tests bomb get bounds
+     */
     @Test
     public void bombGetBounds() {
         assertNotNull(b.getBounds());
     }
 
+    /**
+     * Tests bullet constructor
+     */
     @Test
     public void bulletConstructor() {
         assertEquals(bt.getID(), ID.Bullet);
     }
     
+    /**
+     * Tests bullet tick/update method
+     */
     @Test
     public void bulletTick() {
         init();
@@ -283,26 +384,41 @@ public class JULastPlaneStandingTest
         assertEquals(bt.getX(), x);
     }
     
+    /**
+     * Tests bullet get bounds
+     */
     @Test
     public void bulletGetBounds() {
         assertNotNull(bt.getBounds());
     }
     
+    /**
+     * Tests Projectile constructor
+     */
     @Test
     public void projectileConstructor() {
         assertEquals(pr.getID(), ID.Projectile);
     }
     
+    /**
+     * Tests shooter constructor
+     */
     @Test
     public void shooterConstructor() {
         assertEquals(s.getID(), ID.Shooter);
     }
     
+    /**
+     * Tests spawn constructor
+     */
     @Test
     public void spawnConstructor() {
         assertNotNull(new Spawn(this.handler, this.hud, t));
     }
     
+    /**
+     * Tests handler tick/update method
+     */
     @Test
     public void handlerTick() {
         //init();
@@ -311,6 +427,9 @@ public class JULastPlaneStandingTest
         assertTrue(handler.containsObject( ID.Bullet ));
     }
     
+    /**
+     * Tests handler addObject
+     */
     @Test
     public void handlerAddObject() {
         //init();
@@ -318,6 +437,9 @@ public class JULastPlaneStandingTest
         assertTrue(handler.containsObject( ID.Bullet ));
     }
     
+    /**
+     * Tests handler removeObject
+     */
     @Test
     public void handlerRemoveObject() {
         //init();
@@ -326,6 +448,9 @@ public class JULastPlaneStandingTest
         assertTrue(!handler.containsObject( ID.Bullet ));
     }
     
+    /**
+     * Tests handler getObject
+     */
     @Test
     public void handlerGetObject() {
         //init();
@@ -334,6 +459,9 @@ public class JULastPlaneStandingTest
         assertEquals(x.getID(), ID.Bullet);
     }
     
+    /**
+     * Tests handler containsObject
+     */
     @Test
     public void handlerContainsObject() {
         //init();
@@ -341,6 +469,9 @@ public class JULastPlaneStandingTest
         assertTrue(handler.containsObject( ID.Bullet ));
     }
     
+    /**
+     * Tests YouWin constructor
+     */
     @Test
     public void youWinConstructor() {
         //init();
@@ -348,6 +479,9 @@ public class JULastPlaneStandingTest
         assertTrue(handler.containsObject( ID.YouWin ));
     }
     
+    /**
+     * Tests youWin get bounds
+     */
     @Test
     public void youWinGetBounds() {
         //init();

@@ -4,17 +4,36 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 
+/**
+*
+*  Translates a key to movement
+*
+*  @author  Ravi
+*  @version May 20, 2018
+*  @author  Period: 2
+*  @author  Assignment: APCSFinal
+*
+*  @author  Sources: Ravi, Rohan David
+*/
+
 public class KeyInput extends KeyAdapter
 {
     private Handler handler;
 
 
+    /**
+     * KeyInput constructor
+     * @param handler
+     */
     public KeyInput( Handler handler )
     {
         this.handler = handler;
     }
 
 
+    /**
+     * Moves object by pressing key
+     */
     public void keyPressed( KeyEvent e )
     {
         int key = e.getKeyCode();
@@ -52,6 +71,9 @@ public class KeyInput extends KeyAdapter
     }
 
 
+    /**
+     * The object doesn't move once key is released
+     */
     public void keyReleased( KeyEvent e )
     {
         int key = e.getKeyCode();
