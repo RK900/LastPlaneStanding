@@ -1,13 +1,16 @@
 package LastPlaneStanding;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 public class YouWin extends GameObject
 {
-    public YouWin(int x, int y, ID id) {
+    private String s;
+    public YouWin(int x, int y, ID id, String s) {
         super(x, y, id);
+        this.s = s;
     }
 
     @Override
@@ -20,7 +23,9 @@ public class YouWin extends GameObject
     @Override
     public void render( Graphics g )
     {
-        //g.drawImage("youwin.jpg", 0,0, new ImageObserver());
+        g.setColor( Color.white );
+        g.drawString( s, x, y );
+        Game.lose = true;
         
     }
 

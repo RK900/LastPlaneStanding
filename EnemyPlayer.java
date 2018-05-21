@@ -39,6 +39,7 @@ public class EnemyPlayer extends GameObject
         {
             handler.removeObject( this );
         }
+        
     }
 
 

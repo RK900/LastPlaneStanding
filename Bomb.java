@@ -27,7 +27,7 @@ public class Bomb extends Projectile
         height = 10;
         this.handler = handler;
         accY = 1;
-        velX = 5;
+        velX = 3;
         try
         {
             img = ImageIO.read( new File( "bomb.png" ) );
@@ -53,6 +53,7 @@ public class Bomb extends Projectile
         if (y >= Game.HEIGHT - 16)
         {
             handler.removeObject( this );
+            Player.bombCount--;
         }
         
         collide();
@@ -81,6 +82,28 @@ public class Bomb extends Projectile
                 {
                     //HUD.HEALTH -= 10;
                     handler.removeObject( temp );
+                    handler.removeObject( this );
+                    Player.bombCount--;
+                }
+            }
+            if( temp.getID() == ID.SmartTank)
+            {
+                if ( getBounds().intersects( temp.getBounds() ))
+                {
+                    //HUD.HEALTH -= 10;
+                    handler.removeObject( temp );
+                    handler.removeObject( this );
+                    Player.bombCount--;
+                }
+            }
+            if( temp.getID() == ID.SuperTank)
+            {
+                if ( getBounds().intersects( temp.getBounds() ))
+                {
+                    //HUD.HEALTH -= 10;
+                    handler.removeObject( temp );
+                    handler.removeObject( this );
+                    Player.bombCount--;
                 }
             }
         }
