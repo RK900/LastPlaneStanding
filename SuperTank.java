@@ -37,6 +37,8 @@ public class SuperTank extends Tank
      *            Y location
      * @param id
      *            ID
+     * @param life health
+     * @param hud heads up display
      * @param handler
      *            Handler
      */

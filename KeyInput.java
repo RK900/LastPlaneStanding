@@ -23,7 +23,7 @@ public class KeyInput extends KeyAdapter
 
     /**
      * KeyInput constructor
-     * @param handler
+     * @param handler Handler
      */
     public KeyInput( Handler handler )
     {

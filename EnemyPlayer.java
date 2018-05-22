@@ -26,10 +26,10 @@ public class EnemyPlayer extends GameObject
 
     /**
      * EnemyPlayer constructor initializing variables
-     * @param x
-     * @param y
-     * @param id
-     * @param handler
+     * @param x X pos
+     * @param y Y pos
+     * @param id ID
+     * @param handler Handler
      */
     public EnemyPlayer(int x, int y, ID id, Handler handler)
     {

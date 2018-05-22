@@ -24,9 +24,9 @@ public class Projectile extends GameObject
 
     /**
      * Projectile constructor
-     * @param x
-     * @param y
-     * @param id
+     * @param x X pos
+     * @param y Y pos
+     * @param id ID
      */
     public Projectile( int x, int y, ID id )
     {

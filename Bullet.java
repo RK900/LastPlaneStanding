@@ -36,11 +36,11 @@ public class Bullet extends Projectile
    
    /**
    * Bullet constructor
-   * @param x
-   * @param y
-   * @param id
-   * @param life
-   * @param handler
+   * @param x X pos
+   * @param y Y pos
+   * @param id ID
+   * @param life health
+   * @param handler Handler
    */
    public Bullet( int x, int y, ID id, float life, Handler handler )
    {

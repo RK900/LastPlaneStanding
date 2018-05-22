@@ -10,10 +10,10 @@ import java.awt.*;
  *
  *  @author  rohankoodli
  *  @version May 18, 2018
- *  @author  Period: TODO
+ *  @author  Period: 2
  *  @author  Assignment: APCS2
  *
- *  @author  Sources: TODO
+ *  @author  Sources: Rohan Ravi David
  */
 public class Player extends GameObject
 {
@@ -25,10 +25,10 @@ public class Player extends GameObject
     public boolean tickUpdate = false;
 
     /**
-     * @param x
-     * @param y
-     * @param id
-     * @param handler
+     * @param x X pos
+     * @param y Y pos
+     * @param id ID
+     * @param handler Handler
      */
     public Player( int x, int y, ID id, Handler handler )
     {
@@ -40,6 +40,9 @@ public class Player extends GameObject
     }
 
 
+    /**
+     * Updates player
+     */
     public void tick()
     {
         tickUpdate = true;
@@ -56,6 +59,9 @@ public class Player extends GameObject
     }
 
 
+    /**
+     * Renders player
+     */
     public void render( Graphics g )
     {
         g.setColor( Color.white );
@@ -64,6 +70,9 @@ public class Player extends GameObject
     }
 
 
+    /**
+     * Checks for collisions
+     */
     public void collideTank()
     {
         for ( int i = 0; i < handler.object.size(); i++ )
@@ -81,6 +90,9 @@ public class Player extends GameObject
     }
 
 
+    /**
+     * Fires Bomb
+     */
     public void fire()
     {
         if ( bombCount < 2 )
@@ -91,6 +103,10 @@ public class Player extends GameObject
     }
 
 
+    /** 
+     * Gets bounds of player
+     * @return Rectangle of bounds
+     */
     @Override
     public Rectangle getBounds()
     {

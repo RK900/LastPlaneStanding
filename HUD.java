@@ -42,8 +42,7 @@ public class HUD
 
    /**
    * renders health
-   * TODO Write your method description here.
-   * @param g
+   * @param g Graphics component
    */
    public void render( Graphics g )
     {
@@ -61,7 +60,7 @@ public class HUD
    /**
    *
    * Sets the score of the player.
-   * @param score
+   * @param score score of player
    */
    public void setScore( int score )
    {
@@ -71,7 +70,7 @@ public class HUD
    /**
    *
    * Gets the Player's score.
-   * @return
+   * @return score
    */
    public int getScore()
    {
@@ -79,9 +78,8 @@ public class HUD
    }
 
    /**
-   *
    * Sets the game level.
-   * @param level
+   * @param level Level
    */
    public void setLevel( int level )
    {
@@ -90,8 +88,7 @@ public class HUD
 
    /**
    * Gets the game level
-   *
-   * @return
+   * @return level
    */
    public int getLevel()
    {

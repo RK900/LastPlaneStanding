@@ -34,10 +34,10 @@ public class Bomb extends Projectile
    
    /**
    * Bomb constructor
-   * @param x
-   * @param y
-   * @param id
-   * @param handler
+   * @param x X position
+   * @param y Y position
+   * @param id ID
+   * @param handler Handler
    */
    public Bomb( int x, int y, ID id, Handler handler )
    {

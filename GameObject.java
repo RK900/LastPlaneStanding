@@ -68,7 +68,7 @@ public abstract class GameObject {
 
     /**
      * Get x location
-     * @param y Y location
+     * @return X location
      */
     public int getX() {
         return x;
@@ -76,7 +76,7 @@ public abstract class GameObject {
 
     /**
      * Get y location
-     * @param y Y location
+     * @return Y location
      */
     public int getY() {
         return  y;
@@ -85,7 +85,7 @@ public abstract class GameObject {
     
     /**
      * Set ID of GameObject
-     * @param id
+     * @param id ID
      */
     public void setID(ID id) {
         this.id = id;
@@ -93,7 +93,7 @@ public abstract class GameObject {
 
     /**
      * Get ID of GameObject
-     * @param id
+     * @return id
      */
     public ID getID() {
         return this.id;
@@ -101,7 +101,7 @@ public abstract class GameObject {
 
     /**
      * Set x velocity
-     * @param x X velocity
+     * @param velX X velocity
      */
     public void setVelX(int velX) {
         this.velX = velX;
@@ -109,7 +109,7 @@ public abstract class GameObject {
 
     /**
      * Set y velocity
-     * @param y Y velocity
+     * @param velY Y velocity
      */
     public void setVelY(int velY) {
         this.velY = velY;
@@ -117,7 +117,7 @@ public abstract class GameObject {
 
     /**
      * Get x velocity
-     * @param x X velocity
+     * @return X velocity
      */
     public int getVelX() {
         return velX;
@@ -125,7 +125,7 @@ public abstract class GameObject {
 
     /**
      * Get y velocity
-     * @param y Y velocity
+     * @return Y velocity
      */
     public int getVelY() {
         return velY;
