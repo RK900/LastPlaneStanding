@@ -9,7 +9,7 @@ import java.awt.Graphics;
 *  Heads up Display
 *  Shows how much health you have left
 *
-*  @author  David Xu
+*  @author  Ravi
 *  @version May 20, 2018
 *  @author  Period: 2
 *  @author  Assignment: APCSFinal
@@ -31,15 +31,11 @@ public class HUD
    * Updates health.
    */
    public void tick()
-   {
-       HEALTH = Game.clamp( HEALTH, 0, 100 );
-       greenValue = Game.clamp( greenValue, 0, 255 );
-       greenValue = HEALTH * 2;
-       if ( !Game.lose )
-       {
-           score++;
-       }
-   }
+    {
+        HEALTH = Game.clamp( HEALTH, 0, 100 );
+        greenValue = Game.clamp( greenValue, 0, 255 );
+        greenValue = HEALTH * 2;
+    }
 
    /**
    * renders health
@@ -47,17 +43,17 @@ public class HUD
    * @param g
    */
    public void render( Graphics g )
-   {
-       g.setColor( Color.gray );
-       g.fillRect( 15, 15, 200, 32 );
-       g.setColor( new Color( 75, greenValue, 0 ) );
-       g.fillRect( 15, 15, HEALTH * 2, 32 );
-       g.setColor( Color.white );
-       g.drawRect( 15, 15, 200, 32 );
-       g.drawString( "Score: " + score, 10, 64 );
-       g.drawString( "Level: " + level, 10, 80 );
+    {
+        g.setFont( font );
+        g.setColor( Color.gray );
+        g.fillRect( 15, 15, 200, 32 );
+        g.setColor( new Color( 75, greenValue, 0 ) );
+        g.fillRect( 15, 15, HEALTH * 2, 32 );
+        g.setColor( Color.white );
+        g.drawRect( 15, 15, 200, 32 );
+        g.drawString( "Level: " + level, 10, 80 );
 
-   }
+    }
 
    /**
    *
