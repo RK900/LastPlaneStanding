@@ -8,16 +8,6 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JTextField;
 
 
-/**
- *  Runs the entire game
- *
- *  @author  rohankoodli
- *  @version May 21, 2018
- *  @author  Period: 2
- *  @author  Assignment: APCS2
- *
- *  @author  Sources: Rohan Ravi David
- */
 public class Game extends Canvas implements Runnable
 {
 
@@ -173,12 +163,13 @@ public class Game extends Canvas implements Runnable
         {
 
             handler
-                .addObject( new YouWin( Game.HEIGHT / 2, Game.WIDTH / 2, ID.YouWin, "Game Over" ) );
+                .addObject( new YouWin( Game.WIDTH / 2 - 64, Game.HEIGHT / 2, ID.YouWin, "Game Over" ) );
             Game.lose = true;
             finish = true;
         }
         else if ( hud.getLevel() == 1 && !handler.containsObject( ID.Tank ) )
         {
+            removeBomb();
             hud.setLevel( 2 );
             handler.addObject( new Tank( ( new Random().nextInt( WIDTH ) + 400 ) / 2
                 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler ) );
@@ -189,6 +180,7 @@ public class Game extends Canvas implements Runnable
         }
         else if ( hud.getLevel() == 2 && !handler.containsObject( ID.Tank ) )
         {
+            removeBomb();
             hud.setLevel( 3 );
             handler.addObject( new Tank( ( new Random().nextInt( WIDTH ) + 400 ) / 2
                 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler ) );
@@ -198,6 +190,7 @@ public class Game extends Canvas implements Runnable
         else if ( hud.getLevel() == 3 && !handler.containsObject( ID.Tank )
             && !handler.containsObject( ID.SmartTank ) )
         {
+            removeBomb();
             hud.setLevel( 4 );
             handler.addObject( new Tank( ( new Random().nextInt( WIDTH ) + 400 ) / 2
                 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler ) );
@@ -206,8 +199,10 @@ public class Game extends Canvas implements Runnable
             handler.addObject( new SmartTank( ( new Random().nextInt( WIDTH ) + 400 ) / 2
                 - 200, HEIGHT - 64, ID.SmartTank, 12.5f, hud, handler ) );
         }
-        else if ( hud.getLevel() == 4 && !handler.containsObject( ID.Tank ) && !handler.containsObject( ID.SmartTank ) )
+        else if ( hud.getLevel() == 4 && !handler.containsObject( ID.Tank )
+            && !handler.containsObject( ID.SmartTank ) )
         {
+            removeBomb();
             hud.setLevel( 5 );
             handler.addObject( new Tank( ( new Random().nextInt( WIDTH ) + 400 ) / 2
                 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler ) );
@@ -216,8 +211,10 @@ public class Game extends Canvas implements Runnable
             handler.addObject( new SmartTank( ( new Random().nextInt( WIDTH ) + 400 ) / 2
                 - 200, HEIGHT - 64, ID.SmartTank, 12.5f, hud, handler ) );
         }
-        else if (hud.getLevel() == 5 && !handler.containsObject( ID.Tank ) && !handler.containsObject( ID.SmartTank ) )
+        else if ( hud.getLevel() == 5 && !handler.containsObject( ID.Tank )
+            && !handler.containsObject( ID.SmartTank ) )
         {
+            removeBomb();
             hud.setLevel( 6 );
             handler.addObject( new Tank( ( new Random().nextInt( WIDTH ) + 400 ) / 2
                 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler ) );
@@ -227,8 +224,9 @@ public class Game extends Canvas implements Runnable
                 - 200, HEIGHT - 64, ID.SuperTank, 12.5f, hud, handler ) );
         }
         else if ( hud.getLevel() == 6 && !handler.containsObject( ID.Tank )
-                        && !handler.containsObject( ID.SmartTank ) && !handler.containsObject( ID.SuperTank ) )
-                    {
+            && !handler.containsObject( ID.SmartTank ) && !handler.containsObject( ID.SuperTank ) )
+        {
+            removeBomb();
             hud.setLevel( 7 );
             handler.addObject( new Tank( ( new Random().nextInt( WIDTH ) + 400 ) / 2
                 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler ) );
@@ -238,8 +236,8 @@ public class Game extends Canvas implements Runnable
                 - 200, HEIGHT - 64, ID.SuperTank, 12.5f, hud, handler ) );
         }
         else if ( hud.getLevel() == 7 && !handler.containsObject( ID.Tank )
-                        && !handler.containsObject( ID.SmartTank ) && !handler.containsObject( ID.SuperTank ) )
-                    {
+            && !handler.containsObject( ID.SmartTank ) && !handler.containsObject( ID.SuperTank ) )
+        {
             hud.setLevel( 8 );
             handler.addObject( new Tank( ( new Random().nextInt( WIDTH ) + 400 ) / 2
                 - 200, HEIGHT - 64, ID.Tank, 12.5f, hud, handler ) );
@@ -247,12 +245,12 @@ public class Game extends Canvas implements Runnable
                 - 200, HEIGHT - 64, ID.SuperTank, 12.5f, hud, handler ) );
             handler.addObject( new SuperTank( ( new Random().nextInt( WIDTH ) + 400 ) / 2
                 - 200, HEIGHT - 64, ID.SuperTank, 12.5f, hud, handler ) );
-        }            
+        }
         else if ( hud.getLevel() == 8 && !handler.containsObject( ID.Tank )
-            && !handler.containsObject( ID.SmartTank ) && !handler.containsObject( ID.SuperTank ) )
+            && !handler.containsObject( ID.SmartTank ) && !handler.containsObject( ID.SuperTank ) && !finish )
         {
             handler
-                .addObject( new YouWin( Game.HEIGHT / 2, Game.WIDTH / 2, ID.YouWin, "You Win" ) );
+                .addObject( new YouWin( Game.WIDTH / 2 - 64, Game.HEIGHT / 2, ID.YouWin, "You Win" ) );
             finish = true;
         }
         // else if(!handler.containsObject( ID.Tank ) &&
@@ -307,6 +305,7 @@ public class Game extends Canvas implements Runnable
             return;
         }
         Graphics g = bs.getDrawGraphics();
+        //g.setColor( Color.white );
         g.setColor( Color.black );
         g.fillRect( 0, 0, WIDTH, HEIGHT );
         handler.render( g );
@@ -340,6 +339,20 @@ public class Game extends Canvas implements Runnable
         else
         {
             return var;
+        }
+    }
+
+
+    public void removeBomb()
+    {
+        for ( int i = 0; i < handler.object.size(); i++ )
+        {
+            GameObject temp = handler.object.get( i );
+            if ( temp.getID() == ID.Bomb )
+            {
+                handler.removeObject( temp );
+                Player.bombCount--;
+            }
         }
     }
 
