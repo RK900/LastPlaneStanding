@@ -1,6 +1,7 @@
 package LastPlaneStanding;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 
@@ -13,6 +14,8 @@ public class HUD
     private int score = 0;
 
     private int level = 1;
+    
+    private Font font = new Font( "SansSerif", Font.PLAIN, 14 );
 
 
     public void tick()
@@ -20,22 +23,18 @@ public class HUD
         HEALTH = Game.clamp( HEALTH, 0, 100 );
         greenValue = Game.clamp( greenValue, 0, 255 );
         greenValue = HEALTH * 2;
-        if ( !Game.lose )
-        {
-            score++;
-        }
     }
 
 
     public void render( Graphics g )
     {
+        g.setFont( font );
         g.setColor( Color.gray );
         g.fillRect( 15, 15, 200, 32 );
         g.setColor( new Color( 75, greenValue, 0 ) );
         g.fillRect( 15, 15, HEALTH * 2, 32 );
         g.setColor( Color.white );
         g.drawRect( 15, 15, 200, 32 );
-        g.drawString( "Score: " + score, 10, 64 );
         g.drawString( "Level: " + level, 10, 80 );
 
     }
