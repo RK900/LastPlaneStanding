@@ -1,6 +1,7 @@
 package LastPlaneStanding;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 
@@ -25,6 +26,8 @@ public class HUD
    private int score = 0;
 
    private int level = 1;
+   
+   private Font font = new Font( "SansSerif", Font.PLAIN, 14 );
 
    /**
    *

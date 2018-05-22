@@ -8,6 +8,16 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JTextField;
 
 
+/**
+ *  Main Game class
+ *
+ *  @author  rohankoodli, Ravi
+ *  @version May 22, 2018
+ *  @author  Period: 2
+ *  @author  Assignment: APCS2
+ *
+ *  @author  Sources: Rohan Ravi David
+ */
 public class Game extends Canvas implements Runnable
 {
 
@@ -278,6 +288,10 @@ public class Game extends Canvas implements Runnable
     }
 
 
+    /**
+     * Waits 1 second
+     * @return true after 1 sec
+     */
     public boolean waitOneSec()
     {
         try
@@ -343,6 +357,9 @@ public class Game extends Canvas implements Runnable
     }
 
 
+    /**
+     * Removes bomb from screen
+     */
     public void removeBomb()
     {
         for ( int i = 0; i < handler.object.size(); i++ )

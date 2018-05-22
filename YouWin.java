@@ -6,16 +6,38 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
+/**
+ *  YouWin
+ *  Prints YouWin if you win
+ *
+ *  @author  rohankoodli
+ *  @version May 22, 2018
+ *  @author  Period: 2
+ *  @author  Assignment: APCS2
+ *
+ *  @author  Sources: Rohan Ravi David
+ */
 public class YouWin extends GameObject
 {
     private String s;
     private Font font;
+    
+    
+    /**
+     * @param x X location
+     * @param y Y location
+     * @param id ID
+     * @param s String to show
+     */
     public YouWin(int x, int y, ID id, String s) {
         super(x, y, id);
         font = new Font( "SansSerif", Font.PLAIN, 36 );
         this.s = s;
     }
 
+    /**
+     * Updates the YouWin object
+     */
     @Override
     public void tick()
     {
@@ -23,6 +45,9 @@ public class YouWin extends GameObject
         
     }
 
+    /**
+     * Renders the YouWin object
+     */
     @Override
     public void render( Graphics g )
     {
@@ -33,6 +58,10 @@ public class YouWin extends GameObject
         
     }
 
+    /**
+     * Gets bounds of YouWin
+     * @return Rectangle bounds
+     */
     @Override
     public Rectangle getBounds()
     {
